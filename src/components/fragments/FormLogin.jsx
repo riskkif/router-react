@@ -3,8 +3,14 @@ import Button from "../Elements/Button"
 import InputForm from "../Elements/Input"
 
 const FormLogin = () => {
+  const handleLogin = (event) => {
+    event.preventDefault();
+    localStorage.setItem('email', event.target.email.value)
+    localStorage.setItem('password', event.target.password.value)
+    window.location.href ='/products';
+  }
     return(
-        <form action="">
+        <form action="" onSubmit={handleLogin}>
             <div className="mb-4 py-4">
               <InputForm 
               type="email" 
@@ -23,7 +29,7 @@ const FormLogin = () => {
               </InputForm>
             </div>
             <div className="flex items-center justify-between">
-              <Button variant="bg-indigo-600"  >Login</Button>
+              <Button variant="bg-indigo-600" type="submit" >Login</Button>
             </div>
           </form>
     )
